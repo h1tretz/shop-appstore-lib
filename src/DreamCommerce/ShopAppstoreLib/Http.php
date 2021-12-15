@@ -391,7 +391,7 @@ class Http implements HttpInterface
         foreach (array('Content-Encoding', 'content-encoding') as $header) {
             if (isset($responseHeaders[$header])) {
                 if (strtolower($responseHeaders[$header]) == 'gzip') {
-                    $result = gzinflate(substr($result, 10, -8));
+                    $result = gzdecode($result);
                     break;
                 }
             }
